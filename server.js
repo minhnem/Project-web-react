@@ -12,6 +12,6 @@ server.listen(3000, () => {
 
 // Xuất hàm server để Vercel có thể sử dụng
 export default (req, res) => {
-  // Thay vì gọi server.listen(), hãy sử dụng router
+  server(req, res); // Gọi server để xử lý yêu cầu
   router(req, res);
 };
