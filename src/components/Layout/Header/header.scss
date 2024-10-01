@@ -1,0 +1,123 @@
+.header__container {
+    max-width: 73.125rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.quantity {
+    font-size: 1rem;
+    font-weight: 400;
+    color: #fff;
+}
+
+.nav-page__menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 2.5rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.75rem;
+    color: #fff;
+}
+
+.nav-page__category:hover .nav-page__list{
+    display: block;
+}
+
+.nav-page__list {
+    display: none;
+}
+
+
+.item-page__item {
+    display: block;
+    border-top: 1px solid #1E787D;
+    width: 100%;
+    padding: 8px 0 8px 24px;
+    font-family: Manrope;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1,75rem;
+    color: #fff;
+}
+
+.nav-page__menu--mobile {
+    color: #005D63;
+    padding: 4px 0 4px;
+}
+
+.nav-page__item--mobile {
+    border: none;
+    color: #005D63;
+    padding: 4px 0 4px 24px;
+}
+
+.dropdown__menu {
+    position: fixed;
+    top: 136px;
+    left: 0;
+    width: 50%;
+    height: 100vh;
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
+    background-color: #fff;
+    translate: -100%;
+    transition: translate 0.5s;
+}
+
+.dropdown__menu--active {
+    position: fixed;
+    top: 136px;
+    left: 0;
+    width: 50%;
+    height: 100vh;
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
+    background-color: #fff;
+    translate: 0;
+    transition: translate 0.5s;
+    z-index: 10;
+}
+
+.dropdown-info:hover .dropdown-act {
+    display: block;
+}
+
+.dropdown-act {
+    display: none;
+    &::before {
+        content: "";
+        position: absolute;
+        display: inline-block;
+        border-left: 8px solid transparent;
+        border-right: 8px solid transparent;
+        border-bottom: 16px solid #fff;
+        top: -15px;
+        left: 5px;
+    }
+}
+
+
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 640px) {
+    
+}
+
+
+@media only screen and (min-width: 768px) {
+
+}
+
+
+@media only screen and (min-width: 1024px) {
+    .dropdown__menu--active {
+        display: none;
+    }
+}
+
+
+@media only screen and (min-width: 1200px) {
+    
+}

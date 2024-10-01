@@ -1,0 +1,48 @@
+.learn__heading {
+    font-size: 2.625rem;
+    font-weight: 700;
+    line-height: 3.25rem;
+}
+
+.learn__desc {
+    margin: 18px 0 40px 0;
+    font-size: 1.125rem;
+    font-weight: 400;
+    line-height: 1.875rem;
+}
+
+.learn__desc--blog {
+    margin: 25px 0 30px 0;
+    max-width: 370px;
+    height: 60px;
+    font-size: 1.125rem;
+    font-weight: 400;
+    line-height: 1.875rem;
+}
+
+.learn__link {
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 30px;
+}
+
+.learn__link::after {
+    content: "";
+    display: block;
+    width: 118px;
+    height: 2px;
+    background: #000;
+}
+
+
+@media screen and (min-width: 1024px) {
+    .learn__heading {
+        font-size: 2rem;
+        line-height: 2.625rem;
+    }
+
+    .learn__desc {
+        margin: 18px 0 70px 0;
+    }
+    
+}

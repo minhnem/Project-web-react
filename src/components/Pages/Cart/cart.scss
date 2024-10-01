@@ -1,0 +1,227 @@
+.breadcrumbs {
+    display: flex;
+    margin-bottom: 30px;
+    padding: 20px;
+    gap: 30px;
+    background: #fff;
+    border-radius: 8px;
+}
+
+.breadcrumbs__link {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px; 
+}
+
+// bắt đầu sửa
+
+.cart-info {
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 20px;
+
+    &__row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-bottom: 14px;
+
+        &--border {
+            border-bottom: 1px solid #D2D1D6;
+        }
+    }
+
+    &__label {
+        font-size: 1.125rem;
+        font-weight: 600;
+        line-height: 24px; 
+    }
+
+    &__total-price {
+        font-size: 16px;
+        font-weight: 700;
+        line-height: 24px;
+    }
+
+    &__btn {
+        margin-top: 10px;
+        padding: 15px 25px;
+        width: 100%;
+        font-size: 1.375rem;
+        font-weight: 600;
+        border-radius: 999px;
+        background-color: #FFD44D;
+    }
+
+    &__link {
+        display: flex;
+        gap: 10px;
+        font-size: 1.125rem;
+        font-weight: 500;
+        line-height: 1.625rem; 
+    }
+}
+
+.cart-item {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #D2D1D6;
+
+    &__thumb {
+        width: 110px;
+        height: 100px;
+    }
+
+    &__content {
+
+        &-left {
+            display: flex;
+            flex-direction: column;
+        }
+
+        &-right {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+    }
+
+    &__title {
+        font-size: 1rem;
+        font-weight: 500;
+        line-height: 1.625rem;
+        max-width: 168px;
+        white-space: nowrap; 
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    &__price {
+        font-size: 1.125rem;
+        font-weight: 500;
+        line-height: 1.625rem;
+        color: #9E9DA8;
+    }
+
+    &__ctrl {
+        display: flex;
+        margin-top: auto;
+        height: 46px;
+        gap: 10px;
+
+        &-btn {
+            display: flex;
+            align-items: center;
+            gap: 2px;
+            font-size: 1rem;
+            font-weight: 500;
+            line-height: 1.5rem;
+            color: #9E9DA8;
+        }
+    }
+
+    &__input {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 0 10px;
+        border: 1px solid #9E9DA8;
+        border-radius: 10px;
+    }
+
+    &__total-price {
+        font-size: 1.25rem;
+        font-weight: 700;
+        line-height: 2rem; 
+    }
+}
+
+
+@media (min-width: 640px) {  
+    .cart-info {
+        padding: 15px;
+    }
+    
+    .cart-item {
+        gap: 20px;
+    
+        &__content {
+            flex: 1;
+            display: flex;
+            justify-content: space-between;
+    
+            &-left {
+                display: flex;
+                flex-direction: column;
+            }
+    
+            &-right {
+                display: flex;
+                flex-direction: column;
+            }
+        }
+
+        &__title {
+            font-size: 1.125rem;
+            max-width: 268px;
+        }
+    
+        &__ctrl {
+            gap: 15px;
+    
+            &-btn {
+                gap: 10px;
+            }
+        }
+
+        &__total-price {
+            width: 100%;
+            text-align: end;
+        }
+    }
+}
+
+@media (min-width: 768px) {
+    .cart-info {
+        padding: 30px;
+    }
+    
+    .cart-item {
+        gap: 30px;
+    
+        &__thumb {
+            width: 150px;
+            height: 140px;
+        }
+    
+        &__title {
+            font-size: 1.3rem;
+            max-width: 368px;
+        }
+    
+        &__price {
+            margin-top: 20px;
+        }
+    
+        &__input {
+            padding: 10px 20px;
+        }
+    }
+}
+
+@media (min-width: 1024px) {  
+
+}
+
+@media (min-width: 1280px) { 
+
+}
+
+@media (min-width: 1536px) {  
+
+}

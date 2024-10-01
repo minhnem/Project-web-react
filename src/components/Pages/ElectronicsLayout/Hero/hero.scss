@@ -1,0 +1,43 @@
+.hero-electronics__img {
+    position: relative;
+}
+
+.hero-electronics__img::before {
+    position: absolute;
+    content: "";
+    display: block;
+    top: -25px;
+    left: -25px;
+    width: 220px;
+    height: 260px;
+    border: 6px solid #005D63;
+    border-radius: 20px;
+}
+
+.hero-electronics__img::after {
+    position: absolute;
+    content: "";
+    display: block;
+    bottom: -25px;
+    right: -25px;
+    width: 220px;
+    height: 260px;
+    background: #005D63;
+    border-radius: 20px;
+}
+
+@media (min-width: 640px) { 
+
+}
+
+@media (min-width: 768px) { 
+
+}
+
+@media (min-width: 1024px) { 
+
+}
+
+@media (min-width: 1280px) {
+
+}

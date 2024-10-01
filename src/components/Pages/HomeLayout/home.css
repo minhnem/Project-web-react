@@ -1,0 +1,12 @@
+.hero__container {
+  max-width: 73.125rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero__img--rotate {
+  transform: rotate(-10deg);
+  transform-origin: top right;
+  box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.3);
+  top: 0;
+}/*# sourceMappingURL=home.css.map */
