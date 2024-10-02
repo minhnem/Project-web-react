@@ -26,7 +26,7 @@ const Login = () => {
 
   // kiểm tra tài khoản người dùng hợp lệ hay không
   const checkUsers = async (email, password) => {
-    const response = await fetch("http://localhost:3000/users");
+    const response = await fetch("https://my-data-json-server.vercel.app/users");
     const data = await response.json();
     return data.some(
       (user) => user.email === email && user.password === password

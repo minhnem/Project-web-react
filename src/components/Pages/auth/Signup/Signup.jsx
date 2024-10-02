@@ -79,7 +79,7 @@ const Signup = () => {
 
   // kiểm tra email đã tồn tại trong db hay chưa
   const checkUsers = async (email) => {
-    const response = await fetch("http://localhost:3000/users");
+    const response = await fetch("https://my-data-json-server.vercel.app/users");
     const data = await response.json();
     return data.some((user) => user.email === email);
   };
@@ -90,7 +90,7 @@ const Signup = () => {
       toast.error("Email đã tồn tại");
       return;
     }
-    fetch("http://localhost:3000/users", {
+    fetch("https://my-data-json-server.vercel.app/users", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

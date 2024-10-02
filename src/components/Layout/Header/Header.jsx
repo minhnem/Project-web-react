@@ -209,7 +209,7 @@ const Header = () => {
                   placeholder="Search for anything"
                   className="h-[44px]] w-[170px] pl-[10px] rounded-l-lg outline-none"
                 />
-                <img src={search} alt="icon-search" className="rounded-r-lg" />
+                <img src={search} alt="icon-search" className="" />
               </div>
             </div>
 
