@@ -17,7 +17,7 @@ const New = () => {
   const[item, setItem] = useState([])
 
   const fetchProduct = async() => {
-    const response = await fetch("http://localhost:3000/products")
+    const response = await fetch("https://my-data-json-server.vercel.app/products")
     const data = await response.json()
     const products = data.filter((product)=> product.isNew === true)
     setItem(products)
