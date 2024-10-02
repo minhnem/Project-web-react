@@ -209,7 +209,7 @@ const Header = () => {
                   placeholder="Search for anything"
                   className="h-[44px]] w-[170px] pl-[10px] rounded-l-lg outline-none"
                 />
-                <img src={search} alt="icon-search" className="" />
+                <img src={search} alt="icon-search" className="rounded-r-lg" />
               </div>
             </div>
 
@@ -239,11 +239,8 @@ const Header = () => {
                     {/* dropdowwn-menu */}
                     <div className="nav-page__list w-fulln">
                       <Col>
-                        <Link
-                          to="/"
-                          className="item-page__item nav-page__item--mobile"
-                        >
-                          Men Fashion
+                        <Link to="/electronics" className="item-page__item">
+                          Electronics
                         </Link>
                         <Link
                           to="/"
