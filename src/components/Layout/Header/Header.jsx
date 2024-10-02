@@ -239,7 +239,7 @@ const Header = () => {
                     {/* dropdowwn-menu */}
                     <div className="nav-page__list w-fulln">
                       <Col>
-                        <Link to="/electronics" className="item-page__item">
+                        <Link to="/electronics" className="item-page__item text-[#005D63]">
                           Electronics
                         </Link>
                         <Link
