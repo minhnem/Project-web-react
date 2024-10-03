@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./details.scss";
 import imgdetails from "../../../assets/img/details.png";
 import iconStar from "../../../assets/icons/star.png";
@@ -28,46 +28,39 @@ import { AuthContext } from "../../../features/UserContextProvider";
 
 
 const Details = () => {
+  const[products, setProducts] = useState([])
+  const[product, setProduct] = useState(null)
 
-  const productData = [
-    { id: 1, img: best1, title: "Apple Watch Series 6", rate: 18, price: 210, discount: 110, quantity: 1, priceShip: 10},
-    { id: 2, img: best2, title: "iPhone 14 Max Pro", rate: 18, price: 210, discount: 110, quantity: 1, priceShip: 10 },
-    { id: 3, img: best3, title: "Đồng Hồ Báo Thức", rate: 18, price: 210, discount: 110, quantity: 1, priceShip: 10 },
-    { id: 4, img: best4, title: "Apple Watch Series 5", rate: 18, price: 210, discount: 110, quantity: 1, priceShip: 10 },
-    { id: 5, img: best5, title: "Normal Watch", rate: 18, price: 210, discount: 110, quantity: 1, priceShip: 10 },
-    { id: 6, img: best6, title: "Tai Nghe", rate: 18, price: 210, discount: 110, quantity: 1, priceShip: 10 },
-    { id: 7, img: best7, title: "Đồng Hồ Báo Thức", rate: 18, price: 210, discount: 110, quantity: 1, priceShip: 10 },
-    { id: 8, img: best8, title: "Normal Watch", rate: 18, price: 210, discount: 110, quantity: 1, priceShip: 10 },
-    { id: 9, img: best9, title: "Apple Watch Series 6", rate: 18, price: 210, discount: 110, quantity: 1, priceShip: 10 },
-    { id: 10, img: best10, title: "iPhone 14 Max Pro", rate: 18, price: 210, discount: 110, quantity: 1, priceShip: 10 },
-    { id: 11, img: best11, title: "Đồng Hồ Báo Thức", rate: 18, price: 210, discount: 110, quantity: 1, priceShip: 10 },
-    { id: 12, img: best12, title: "Apple Watch Series 5", rate: 18, price: 210, discount: 110, quantity: 1, priceShip: 10 },
-    { id: 13, img: best13, title: "Normal Watch", rate: 18, price: 210, discount: 110, quantity: 1, priceShip: 10 },
-    { id: 14, img: best14, title: "Headphone", rate: 18, price: 210, discount: 110, quantity: 1, priceShip: 10 },
-    { id: 15, img: best15, title: "Đồng Hồ Báo Thức", rate: 18, price: 210, discount: 110, quantity: 1, priceShip: 10 },
-    { id: 16, img: best16, title: "Normal Watch", rate: 18, price: 210, discount: 110, quantity: 1, priceShip: 10 },
-    { id: 17, img: best1, title: "Apple Watch Series 6", rate: 18, price: 210, discount: 110, quantity: 1, priceShip: 10 },
-    { id: 18, img: best2, title: "iPhone 14 Max Pro", rate: 18, price: 210, discount: 110, quantity: 1, priceShip: 10 },
-    { id: 19, img: best3, title: "Alarm Clock", rate: 18, price: 210, discount: 110, quantity: 1, priceShip: 10 },
-    { id: 20, img: best4, title: "Apple Watch Series 5", rate: 18, price: 210, discount: 110, quantity: 1, priceShip: 10 },
-    { id: 21, img: best5, title: "Normal Watch", rate: 18, price: 210, discount: 110, quantity: 1, priceShip: 10 },
-    { id: 22, img: best6, title: "Headphone", rate: 18, price: 210, discount: 110, quantity: 1, priceShip: 10 },
-    { id: 23, img: best7, title: "Alarm Clock", rate: 18, price: 210, discount: 110, quantity: 1, priceShip: 10 },
-    { id: 24, img: best8, title: "Normal Watch", rate: 18, price: 210, discount: 110, quantity: 1, priceShip: 10 },
-    { id: 25, img: best1, title: "Apple Watch Series 6", rate: 18, price: 210, discount: 110, quantity: 1, priceShip: 10 },
-    { id: 26, img: best2, title: "iPhone 14 Max Pro", rate: 18, price: 210, discount: 110, quantity: 1, priceShip: 10 },
-    { id: 27, img: best3, title: "Alarm Clock", rate: 18, price: 210, discount: 110, quantity: 1, priceShip: 10 },
-    { id: 28, img: best4, title: "Apple Watch Series 5", rate: 18, price: 210, discount: 110, quantity: 1, priceShip: 10 },
-    { id: 29, img: best5, title: "Normal Watch", rate: 18, price: 210, discount: 110, quantity: 1, priceShip: 10 },
-    { id: 30, img: best6, title: "Headphone", rate: 18, price: 210, discount: 110, quantity: 1, priceShip: 10 },
-    { id: 31, img: best7, title: "Alarm Clock", rate: 18, price: 210, discount: 110, quantity: 1, priceShip: 10 },
-    { id: 32, img: best8, title: "Normal Watch", rate: 18, price: 210, discount: 110, quantity: 1, priceShip: 10 },
-  ];
+  const fetchProucts = async() => {
+    const response = await fetch("https://my-data-json-server.vercel.app/products")
+    const data = await response.json()
+    setProducts(data)
+  }
+
+  
+  useEffect(()=>{
+    console.log("mount");
+    fetchProucts()
+  },[])
+
+  useEffect(() => {
+    if (products.length > 0) {
+      const foundProduct = products.find(item => item.id.toString() === id);
+      setProduct(foundProduct);
+      console.log(foundProduct);
+    }
+  }, [products]);
+
 
   const {id} = useParams()
-
-  const product = productData.find(item=>item.id.toString() === id)
+  console.log(id);
+  
+  // const product = products.find(item => item.id.toString() === id);
+  // console.log(product);
+  
   const {dispatch} = useContext(CartContext)
+  
+  // lấy trạng thái từ auth để xác thực người dùng đã đăng nhập hay chưa
   const {state} = useContext(AuthContext)
   const navigate = useNavigate()
 
@@ -82,6 +75,7 @@ const Details = () => {
   return (
     <div className="details py-0 md:py-[70px] bg-[#cccccc36]">
       <div className="inner">
+        {product ? (
         <div className="grid grid-rows-2 grid-cols-1 md:grid-rows-1 md:grid-cols-2 md:gap-[30px] xl:gap-[100px]">
           <figure className="details__wrap">
             <img src={product.img} alt="" />
@@ -138,7 +132,9 @@ const Details = () => {
             </div>
           </div>
         </div>
-
+        ) : (
+          <p>Loading product details...</p>
+        )}
         {/* ====== row chứa styles sản phẩm ====== */}
         <figure className="details__row--img">
           <img src="" alt="" />

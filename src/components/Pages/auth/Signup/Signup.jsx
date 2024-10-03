@@ -9,7 +9,6 @@ import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { FaRegEye } from "react-icons/fa6";
 import { FaRegEyeSlash } from "react-icons/fa6";
-import {LoadingOutlined} from "@ant-design/icons"
 
 const Signup = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -23,6 +22,8 @@ const Signup = () => {
   const inputEmailRef = useRef();
   const inputPasswordRef = useRef();
   const inputCfPasswordRef = useRef();
+
+  const navigate = useNavigate()
 
   let validateErrors = {};
 
@@ -116,6 +117,7 @@ const Signup = () => {
       const password = inputPasswordRef.current.value;
       toast.success("Đăng ký thành công")
       addUser(email, password);
+      navigate("/Login")
     }
   };
 

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import best1 from "../../../../assets/img/best-electronics-1.png";
 import best2 from "../../../../assets/img/best-electronics-2.png";
 import best3 from "../../../../assets/img/best-electronics-3.png";
@@ -12,7 +12,28 @@ import iconHeart from "../../../../assets/icons/icon-heart.png";
 import iconStar from "../../../../assets/icons/star.png";
 import { Link } from "react-router-dom";
 
+import { Navigation, Grid, Pagination, Scrollbar, A11y, Autoplay } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import 'swiper/css/grid';
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "swiper/css/scrollbar";
+
 const New = () => {
+  const[products, setProducts] = useState([])
+
+  const fetchProducts = async()=> {
+    const response = await fetch("https://my-data-json-server.vercel.app/products")
+    const data = await response.json()
+    const listProducts = data.filter((item) => item.category_id === 1 && item.isNew === true )
+    setProducts(listProducts)
+  }
+
+  useEffect(()=>{
+    fetchProducts()
+  },[])
+
   const item = [
     { id: 17, img: best1, title: "Apple Watch Series 6", rate: 18, price: 210, discount: 110, quantity: 1, priceShip: 10 },
     { id: 18, img: best2, title: "iPhone 14 Max Pro", rate: 18, price: 210, discount: 110, quantity: 1, priceShip: 10 },
@@ -34,10 +55,46 @@ const New = () => {
             <button className="product__browse btn">Browse All</button>
           </div>
         </section>
-        <div className="product__list grid grid-rows-4 grid-cols-2 md:grid-rows-3 md:grid-cols-3 lg:grid-rows-2 lg:grid-cols-4 gap-[20px]">
+        <Swiper
+          className="h-[490px] md:h-[750px]"
+          modules={[Navigation, Grid, Pagination, Scrollbar, A11y, Autoplay]}
+          breakpoints={{
+            0: {
+              slidesPerView: 2,
+              grid: {
+                rows: 2,
+                fill: "row",
+              },
+              spaceBetween: 20,
+            },
+            768: {
+              slidesPerView: 3,
+              grid: {
+                rows: 2,
+                fill: "row",
+              },
+              spaceBetween: 20,
+            },
+            1024: {
+              slidesPerView: 4,
+              grid: {
+                rows: 2,
+                fill: "row",
+              },
+              spaceBetween: 20,
+            },
+          }}
+          navigation
+          autoplay={{ 
+            delay: 2500,
+            disableOnInteraction: true
+          }}
+          onSwiper={(swiper) => console.log(swiper)}
+          onSlideChange={() => console.log("slide change")}
+        >
           {/* item 1 */}
-          {item.map((item, index) => (
-            <div key={index} className="product__item ">
+          {products.map((item, index) => (
+            <SwiperSlide key={index} className="product__item flex items-end">
               <Link to={`/details/${item.id}`}>
                 <article className="product bg-[#FFF]">
                   <div className="product__wrap relative">
@@ -66,14 +123,17 @@ const New = () => {
                         />
                         <span className="product-rate__rate">5.0 (18)</span>
                       </div>
-                      <span className="product-rate__price">$110</span>
+                      <div className="product-rate__price flex ">
+                          <span className="mr-[8px] line-through">$210</span>
+                          <span className="text-red-600">$110</span>
+                      </div>
                     </div>
                   </section>
                 </article>
               </Link>
-            </div>
+            </SwiperSlide>
           ))}
-        </div>
+        </Swiper>
         <div className="product__row max-w[1170px] h-[4px] bg-[#F1DEB4] mt-[55px]"></div>
       </section>
     </div>

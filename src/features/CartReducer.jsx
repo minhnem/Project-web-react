@@ -1,9 +1,10 @@
+import { toast } from "react-toastify";
 const CartReducer = (state, action) => {
   switch (action.type) {
     case "Add":
       const checkId = state.some(product => product.id === action.product.id)
       if(checkId) {
-        alert("sản phẩm đã có trong giỏ hàng")
+        toast.error("Sản phẩm đã có trong giỏ hàng")
         return state
       } else {
         return [...state, action.product];

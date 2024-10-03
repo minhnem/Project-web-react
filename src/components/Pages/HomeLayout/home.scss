@@ -136,6 +136,15 @@
     margin-top: 24px;
 }
 
+  /* Di chuyển pagination xuống dưới */
+.swiper-pagination {
+    position: absolute; /* Đảm bảo pagination nằm ở vị trí tuyệt đối */
+    bottom: -50px; /* Di chuyển xuống dưới */
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center; /* Căn giữa pagination */
+}
 
 //======================//
 

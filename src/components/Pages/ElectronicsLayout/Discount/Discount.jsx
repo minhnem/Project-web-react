@@ -1,31 +1,32 @@
-import React from "react";
-import best1 from "../../../../assets/img/best-electronics-1.png";
-import best2 from "../../../../assets/img/best-electronics-2.png";
-import best3 from "../../../../assets/img/best-electronics-3.png";
-import best4 from "../../../../assets/img/best-electronics-4.png";
-import best5 from "../../../../assets/img/best-electronics-5.png";
-import best6 from "../../../../assets/img/best-electronics-6.png";
-import best7 from "../../../../assets/img/best-electronics-3.png";
-import best8 from "../../../../assets/img/best-electronics-5.png";
-
+import React, { useEffect, useState } from "react";
 import iconCarShipping from "../../../../assets/icons/car-shiping.png";
 import iconSupport from "../../../../assets/icons/support.png";
 import iconCartOder from "../../../../assets/icons/car-shiping.png";
 import iconHeart from "../../../../assets/icons/icon-heart.png";
 import iconStar from "../../../../assets/icons/star.png";
 import { Link } from "react-router-dom";
+import { Navigation, Grid, Pagination, Scrollbar, A11y, Autoplay } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import 'swiper/css/grid';
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "swiper/css/scrollbar";
 
 const Discount = () => {
-  const item = [
-    { id: 25, img: best1, title: "Apple Watch Series 6", rate: 18, price: 210, discount: 110, quantity: 1, priceShip: 10 },
-    { id: 26, img: best2, title: "iPhone 14 Max Pro", rate: 18, price: 210, discount: 110, quantity: 1, priceShip: 10 },
-    { id: 27, img: best3, title: "Alarm Clock", rate: 18, price: 210, discount: 110, quantity: 1, priceShip: 10 },
-    { id: 28, img: best4, title: "Apple Watch Series 5", rate: 18, price: 210, discount: 110, quantity: 1, priceShip: 10 },
-    { id: 29, img: best5, title: "Normal Watch", rate: 18, price: 210, discount: 110, quantity: 1, priceShip: 10 },
-    { id: 30, img: best6, title: "Headphone", rate: 18, price: 210, discount: 110, quantity: 1, priceShip: 10 },
-    { id: 31, img: best7, title: "Alarm Clock", rate: 18, price: 210, discount: 110, quantity: 1, priceShip: 10 },
-    { id: 32, img: best8, title: "Normal Watch", rate: 18, price: 210, discount: 110, quantity: 1, priceShip: 10 },
-  ];
+  const [products, setProducts] = useState([])
+
+  const fetchProducts = async() => {
+    const response = await fetch("https://my-data-json-server.vercel.app/products")
+    const data = await response.json()
+    const listProduct = data.filter((item) => item.category_id === 1 && item.isDiscount === true)
+    setProducts(listProduct)
+  }
+
+  useEffect(()=>{
+    fetchProducts()
+  },[])
+
   return (
     <div className="best-electronics relative mb-[25px] pt-[350px] sm:pt-[200px] pb-[50px] bg-[#cccccc36]">
       <div className="flex justify-center ">
@@ -63,16 +64,52 @@ const Discount = () => {
       <section className="inner" data-aos="fade-up">
         <section className="best-electronics__row flex justify-between items-center mb-[40px] xl:mb-[70px]">
           <h2 className="product__heading max-w-[240px] lg:max-w-[470px]">
-            Our Best Collection
+            Discount
           </h2>
           <div>
             <button className="product__browse btn">Browse All</button>
           </div>
         </section>
-        <div className="product__list grid grid-rows-4 grid-cols-2 md:grid-rows-3 md:grid-cols-3 lg:grid-rows-2 lg:grid-cols-4 gap-[20px]">
+        <Swiper
+          className="h-[490px] md:h-[750px]"
+          modules={[Navigation, Grid, Pagination, Scrollbar, A11y, Autoplay]}
+          breakpoints={{
+            0: {
+              slidesPerView: 2,
+              grid: {
+                rows: 2,
+                fill: "row",
+              },
+              spaceBetween: 20,
+            },
+            768: {
+              slidesPerView: 3,
+              grid: {
+                rows: 2,
+                fill: "row",
+              },
+              spaceBetween: 20,
+            },
+            1024: {
+              slidesPerView: 4,
+              grid: {
+                rows: 2,
+                fill: "row",
+              },
+              spaceBetween: 20,
+            },
+          }}
+          navigation
+          autoplay={{ 
+            delay: 2500,
+            disableOnInteraction: true
+          }}
+          onSwiper={(swiper) => console.log(swiper)}
+          onSlideChange={() => console.log("slide change")}
+        >
           {/* item 1 */}
-          {item.map((item, index) => (
-            <div key={index} className="product__item ">
+          {products.map((item, index) => (
+            <SwiperSlide key={index} className="product__item flex items-end">
               <Link to={`/details/${item.id}`}>
                 <article className="product bg-[#FFF]">
                   <div className="product__wrap relative">
@@ -80,7 +117,7 @@ const Discount = () => {
                       <img src={item.img} alt="" className="product__img" />
                     </div>
                     <p className="flex justify-center items-center px-[10px] py-[6px] w-[35px] h-[35px] absolute top-[8px] left-[8px] rounded-full bg-[#ff0000f1] text-[0.6rem] lg:text-[0.875rem] text-[#FFF]">
-                      50%
+                      -50%
                     </p>
                     {/* added to wish list */}
                   </div>
@@ -109,9 +146,9 @@ const Discount = () => {
                   </section>
                 </article>
               </Link>
-            </div>
+            </SwiperSlide>
           ))}
-        </div>
+        </Swiper>
         <div className="product__row max-w[1170px] h-[4px] bg-[#F1DEB4] mt-[55px]"></div>
       </section>
     </div>
