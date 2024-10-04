@@ -1,28 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
 import "./details.scss";
-import imgdetails from "../../../assets/img/details.png";
 import iconStar from "../../../assets/icons/star.png";
 import iconStars from "../../../assets/icons/stars.png";
 import iconStarsDark from "../../../assets/icons/stars-dark.png";
-
-//import best15 from "../../../assets/img/best-electronics-1.png";
-import best1 from "../../../assets/img/best-electronics-1.png";
-import best2 from "../../../assets/img/best-electronics-2.png";
-import best3 from "../../../assets/img/best-electronics-3.png";
-import best4 from "../../../assets/img/best-electronics-4.png";
-import best5 from "../../../assets/img/best-electronics-5.png";
-import best6 from "../../../assets/img/best-electronics-6.png";
-import best7 from "../../../assets/img/best-electronics-3.png";
-import best8 from "../../../assets/img/best-electronics-5.png";
-import best9 from "../../../assets/img/new-electronics-7.png";
-import best10 from "../../../assets/img/new-electronics-8.png";
-import best11 from "../../../assets/img/new-electronics-9.png";
-import best12 from "../../../assets/img/new-electronics-10.png";
-import best13 from "../../../assets/img/new-electronics-11.png";
-import best14 from "../../../assets/img/new-electronics-12.png";
-import best15 from "../../../assets/img/best-electronics-1.png";
-import best16 from "../../../assets/img/best-electronics-4.png";
-import { useNavigate, useParams } from "react-router-dom";
 import { CartContext } from "../../../features/ContextProvider";
 import { AuthContext } from "../../../features/UserContextProvider";
 
@@ -47,20 +27,12 @@ const Details = () => {
     if (products.length > 0) {
       const foundProduct = products.find(item => item.id.toString() === id);
       setProduct(foundProduct);
-      console.log(foundProduct);
     }
   }, [products]);
 
 
   const {id} = useParams()
-  console.log(id);
-  
-  // const product = products.find(item => item.id.toString() === id);
-  // console.log(product);
-  
   const {dispatch} = useContext(CartContext)
-  
-  // lấy trạng thái từ auth để xác thực người dùng đã đăng nhập hay chưa
   const {state} = useContext(AuthContext)
   const navigate = useNavigate()
 

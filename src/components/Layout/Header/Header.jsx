@@ -14,6 +14,7 @@ import { AuthContext } from "../../../features/UserContextProvider";
 import { BiLogOut } from "react-icons/bi";
 import { FaHouseUser } from "react-icons/fa";
 import {toast} from 'react-toastify';
+import { WishContext } from "../../../features/WishContextProvider";
 
 const Header = () => {
   const [isOpenMenu, setisOpenMenu] = useState(false);
@@ -25,7 +26,7 @@ const Header = () => {
 
   const { cart } = useContext(CartContext);
   const { state, dispatch } = useContext(AuthContext);
-
+  const { productsWish } = useContext(WishContext)
   const location = useLocation();
 
   return (
@@ -143,7 +144,7 @@ const Header = () => {
                   <Link className="dropdown-info relative">
                     <img src={person} alt="icon-user" />
                     <div className="dropdown-act absolute w-[149px] rounded-[5px] top-[38px] bg-white">
-                      <Link className="flex gap-[5px] items-center px-[18px] py-[11px] border-b-[1px] text-[1rem] font-[600] text-[#005D63]">
+                      <Link to={"/profile"} className="flex gap-[5px] items-center px-[18px] py-[11px] border-b-[1px] text-[1rem] font-[600] text-[#005D63]">
                         <FaHouseUser /> Tài khoản
                       </Link>
                       <Link
@@ -158,9 +159,9 @@ const Header = () => {
                       </Link>
                     </div>
                   </Link>
-                  <Link className="flex ml-[20px]">
+                  <Link to={"/wish"} className="flex ml-[20px]">
                     <img src={heart} alt="icon-heart" className="mr-[4px]" />
-                    <span className="quantity">(0)</span>
+                    <span className="quantity">{productsWish.length}</span>
                   </Link>
                   <Link
                     to={"/cart"}
@@ -207,7 +208,7 @@ const Header = () => {
                 <input
                   type="text"
                   placeholder="Search for anything"
-                  className="h-[44px]] w-[170px] pl-[10px] rounded-l-lg outline-none"
+                  className="h-[44px]] w-[170px] pl-[10px] outline-none"
                 />
                 <img src={search} alt="icon-search" className="rounded-r-lg" />
               </div>

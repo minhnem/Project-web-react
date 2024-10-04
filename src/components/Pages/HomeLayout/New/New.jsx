@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import iconHeart from "../../../../assets/icons/icon-heart.png";
 import iconStar from "../../../../assets/icons/star.png";
 import {
@@ -15,9 +15,16 @@ import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import iconHeartRed from "../../../../assets/icons/iconHert-red.svg";
+import { WishContext } from "../../../../features/WishContextProvider";
+import { AuthContext } from "../../../../features/UserContextProvider";
+import {toast} from 'react-toastify';
 
 const New = () => {
   const [item, setItem] = useState([]);
+
+  const { productsWish, dispatch } = useContext(WishContext);
+  const { state } = useContext(AuthContext)
 
   const fetchProduct = async () => {
     const response = await fetch(
@@ -31,6 +38,18 @@ const New = () => {
   useEffect(() => {
     fetchProduct();
   }, []);
+
+  const hendleWish = (item) => {
+    if(state.isAuthenticated){
+      if (productsWish.some((product) => product.id === item.id)) {
+        dispatch({ type: "Remove_wish", id: item.id });
+      } else {
+        dispatch({ type: "Add_wish", product: item });
+      }
+    }else{
+      toast.error("Đăng nhập trước khi thêm vào danh sách yêu thích")
+    }
+  };
 
   return (
     <div className="new py-[50px] my-[25px] bg-[#cccccc36]">
@@ -75,8 +94,8 @@ const New = () => {
               key={index}
               className="product__item flex items-center"
             >
-              <Link to={`/details/${item.id}`}>
-                <article className="product relative bg-[#FFF]">
+              <article className="product relative bg-[#FFF]">
+                <Link to={`/details/${item.id}`}>
                   <div className="product__wrap">
                     <div>
                       <img src={item.img} alt="" className="product__img" />
@@ -86,13 +105,21 @@ const New = () => {
                     </p>
                     {/* added to wish list */}
                   </div>
-                  <section className="product__content">
-                    <div className="product__row">
-                      <span className="product__brand">Men-Cloths</span>
-                      <button>
-                        <img src={iconHeart} alt="" className="product__icon" />
-                      </button>
-                    </div>
+                </Link>
+                <section className="product__content">
+                  <div className="product__row">
+                    <span className="product__brand">Men-Cloths</span>
+                    <button onClick={() => hendleWish(item)}>
+                      <img
+                        src={
+                          productsWish.some((product) => product.id === item.id) ? iconHeartRed : iconHeart
+                        }
+                        alt=""
+                        className="product__icon"
+                      />
+                    </button>
+                  </div>
+                  <Link to={`/details/${item.id}`}>
                     <h3 className="product__title">{item.title}</h3>
                     <div className="product__row">
                       <div className="product-rate">
@@ -105,9 +132,9 @@ const New = () => {
                       </div>
                       <span className="product-rate__price">$110</span>
                     </div>
-                  </section>
-                </article>
-              </Link>
+                  </Link>
+                </section>
+              </article>
             </SwiperSlide>
           ))}
         </Swiper>

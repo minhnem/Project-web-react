@@ -1,24 +1,26 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import iconHeart from "../../../../assets/icons/icon-heart.png";
+import iconHeartRed from "../../../../assets/icons/iconHert-red.svg";
 import iconStar from "../../../../assets/icons/star.png";
 import banner from "../../../../assets/img/Banner.png";
 import panelDiscount from "../../../../assets/img/panelDiscount-4.png";
 import { Link } from "react-router-dom";
-import {
-  Navigation,
-  Pagination,
-  Scrollbar,
-  A11y,
-  Autoplay,
-} from "swiper/modules";
+import { Navigation, Pagination, Scrollbar, A11y, Autoplay, } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/grid";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
+import { WishContext } from "../../../../features/WishContextProvider";
+import { AuthContext } from "../../../../features/UserContextProvider";
+import {toast} from 'react-toastify';
+
 const Hurry = () => {
   const [products, setProducts] = useState([]);
+
+  const { productsWish, dispatch } = useContext(WishContext);
+  const { state } = useContext(AuthContext)
 
   const fetchProucts = async () => {
     const response = await fetch(
@@ -33,6 +35,18 @@ const Hurry = () => {
   useEffect(() => {
     fetchProucts();
   }, []);
+
+  const hendleWish = (item) => {
+    if(state.isAuthenticated){
+      if (productsWish.some((product) => product.id === item.id)) {
+        dispatch({ type: "Remove_wish", id: item.id });
+      } else {
+        dispatch({ type: "Add_wish", product: item });
+      }
+    }else{
+      toast.error("Đăng nhập trước khi thêm vào danh sách yêu thích")
+    }
+  };
 
   return (
     <div className="hurry my-[25px] py-[50px] bg-[#cccccc36]">
@@ -71,14 +85,14 @@ const Hurry = () => {
               onSwiper={(swiper) => console.log(swiper)}
               onSlideChange={() => console.log("slide change")}
             >
-              <SwiperSlide>
+              <SwiperSlide className="flex justify-center">
                 <img
                   src={banner}
                   alt=""
                   className="w-[327px] h-[219px] sm:w-[390px] sm:h-[270px] md:w-[490px] md:h-[310px] xl:w-[570px] xl:h-[350px]"
                 />
               </SwiperSlide>
-              <SwiperSlide>
+              <SwiperSlide className="flex justify-center">
                 <img
                   src={panelDiscount}
                   alt=""
@@ -90,8 +104,8 @@ const Hurry = () => {
           {/* item 1 */}
           {products.map((item, index) => (
             <div key={index} className="product__item ">
-              <Link to={`/details/${item.id}`}>
-                <article className="product bg-[#FFF]">
+              <article className="product bg-[#FFF]">
+                <Link to={`/details/${item.id}`}>
                   <div className="product__wrap">
                     <div className="relative">
                       <img src={item.img} alt="" className="product__img" />
@@ -101,13 +115,21 @@ const Hurry = () => {
                     </div>
                     {/* added to wish list */}
                   </div>
-                  <section className="product__content">
-                    <div className="product__row">
-                      <span className="product__brand">Men-Cloths</span>
-                      <button>
-                        <img src={iconHeart} alt="" className="product__icon" />
-                      </button>
-                    </div>
+                </Link>
+                <section className="product__content">
+                  <div className="product__row">
+                    <span className="product__brand">Men-Cloths</span>
+                    <button onClick={() => hendleWish(item)}>
+                      <img
+                        src={
+                          productsWish.some((product) => product.id === item.id) ? iconHeartRed : iconHeart
+                        }
+                        alt=""
+                        className="product__icon"
+                      />
+                    </button>
+                  </div>
+                  <Link to={`/details/${item.id}`}>
                     <h3 className="product__title">{item.title}</h3>
                     <div className="product__row">
                       <div className="product-rate">
@@ -123,9 +145,9 @@ const Hurry = () => {
                         <span className="text-red-600">$110</span>
                       </div>
                     </div>
-                  </section>
-                </article>
-              </Link>
+                  </Link>
+                </section>
+              </article>
             </div>
           ))}
         </div>

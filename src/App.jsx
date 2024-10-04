@@ -5,6 +5,7 @@ import AOS from "aos";
 import BaseLayout from "./components/BaseLayout";
 import { Outlet } from "react-router-dom";
 import ContextProvider from "./features/ContextProvider";
+import WishContextProvider from "./features/WishContextProvider";
 
 function App() {
   useEffect(() => {
@@ -17,9 +18,11 @@ function App() {
   return (
     <>
       <ContextProvider>
-        <BaseLayout>
-          <Outlet />
-        </BaseLayout>
+        <WishContextProvider>
+          <BaseLayout>
+            <Outlet />
+          </BaseLayout>
+        </WishContextProvider>
       </ContextProvider>
     </>
   );

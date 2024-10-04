@@ -5,7 +5,7 @@
     box-sizing: border-box;
 }
 
-p, a, Link, span , button {
+p, a, Link, span , button, label {
     font-family: "Manrope", sans-serif;
 }
 

@@ -1,49 +1,60 @@
-import React, { useEffect, useState } from "react";
-import best1 from "../../../../assets/img/best-electronics-1.png";
-import best2 from "../../../../assets/img/best-electronics-2.png";
-import best3 from "../../../../assets/img/best-electronics-3.png";
-import best4 from "../../../../assets/img/best-electronics-4.png";
-import best5 from "../../../../assets/img/best-electronics-5.png";
-import best6 from "../../../../assets/img/best-electronics-6.png";
-import best7 from "../../../../assets/img/best-electronics-3.png";
-import best8 from "../../../../assets/img/best-electronics-5.png";
-
+import React, { useContext, useEffect, useState } from "react";
 import iconHeart from "../../../../assets/icons/icon-heart.png";
 import iconStar from "../../../../assets/icons/star.png";
 import { Link } from "react-router-dom";
 
-import { Navigation, Grid, Pagination, Scrollbar, A11y, Autoplay } from "swiper/modules";
+import {
+  Navigation,
+  Grid,
+  Pagination,
+  Scrollbar,
+  A11y,
+  Autoplay,
+} from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
-import 'swiper/css/grid';
+import "swiper/css/grid";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
+import iconHeartRed from "../../../../assets/icons/iconHert-red.svg";
+import { WishContext } from "../../../../features/WishContextProvider";
+import { AuthContext } from "../../../../features/UserContextProvider";
+import { toast } from "react-toastify";
 
 const New = () => {
-  const[products, setProducts] = useState([])
+  const [products, setProducts] = useState([]);
 
-  const fetchProducts = async()=> {
-    const response = await fetch("https://my-data-json-server.vercel.app/products")
-    const data = await response.json()
-    const listProducts = data.filter((item) => item.category_id === 1 && item.isNew === true )
-    setProducts(listProducts)
-  }
+  const { productsWish, dispatch } = useContext(WishContext);
+  const { state } = useContext(AuthContext);
 
-  useEffect(()=>{
-    fetchProducts()
-  },[])
+  const fetchProducts = async () => {
+    const response = await fetch(
+      "https://my-data-json-server.vercel.app/products"
+    );
+    const data = await response.json();
+    const listProducts = data.filter(
+      (item) => item.category_id === 1 && item.isNew === true
+    );
+    setProducts(listProducts);
+  };
 
-  const item = [
-    { id: 17, img: best1, title: "Apple Watch Series 6", rate: 18, price: 210, discount: 110, quantity: 1, priceShip: 10 },
-    { id: 18, img: best2, title: "iPhone 14 Max Pro", rate: 18, price: 210, discount: 110, quantity: 1, priceShip: 10 },
-    { id: 19, img: best3, title: "Alarm Clock", rate: 18, price: 210, discount: 110, quantity: 1, priceShip: 10 },
-    { id: 20, img: best4, title: "Apple Watch Series 5", rate: 18, price: 210, discount: 110, quantity: 1, priceShip: 10 },
-    { id: 21, img: best5, title: "Normal Watch", rate: 18, price: 210, discount: 110, quantity: 1, priceShip: 10 },
-    { id: 22, img: best6, title: "Headphone", rate: 18, price: 210, discount: 110, quantity: 1, priceShip: 10 },
-    { id: 23, img: best7, title: "Alarm Clock", rate: 18, price: 210, discount: 110, quantity: 1, priceShip: 10 },
-    { id: 24, img: best8, title: "Normal Watch", rate: 18, price: 210, discount: 110, quantity: 1, priceShip: 10 },
-  ];
+  useEffect(() => {
+    fetchProducts();
+  }, []);
+
+  const hendleWish = (item) => {
+    if (state.isAuthenticated) {
+      if (productsWish.some((product) => product.id === item.id)) {
+        dispatch({ type: "Remove_wish", id: item.id });
+      } else {
+        dispatch({ type: "Add_wish", product: item });
+      }
+    } else {
+      toast.error("Đăng nhập trước khi thêm vào danh sách yêu thích");
+    }
+  };
+
   return (
     <div className="best-electronics relative mb-[25px] py-[70px] bg-[#cccccc36]">
       <section className="inner" data-aos="fade-up">
@@ -85,9 +96,9 @@ const New = () => {
             },
           }}
           navigation
-          autoplay={{ 
+          autoplay={{
             delay: 2500,
-            disableOnInteraction: true
+            disableOnInteraction: true,
           }}
           onSwiper={(swiper) => console.log(swiper)}
           onSlideChange={() => console.log("slide change")}
@@ -95,8 +106,8 @@ const New = () => {
           {/* item 1 */}
           {products.map((item, index) => (
             <SwiperSlide key={index} className="product__item flex items-end">
-              <Link to={`/details/${item.id}`}>
-                <article className="product bg-[#FFF]">
+              <article className="product bg-[#FFF]">
+                <Link to={`/details/${item.id}`}>
                   <div className="product__wrap relative">
                     <div>
                       <img src={item.img} alt="" className="product__img" />
@@ -106,13 +117,21 @@ const New = () => {
                     </p>
                     {/* added to wish list */}
                   </div>
-                  <section className="product__content">
-                    <div className="product__row">
-                      <span className="product__brand">Men-Cloths</span>
-                      <button>
-                        <img src={iconHeart} alt="" className="product__icon" />
-                      </button>
-                    </div>
+                </Link>
+                <section className="product__content">
+                  <div className="product__row">
+                    <span className="product__brand">Men-Cloths</span>
+                    <button onClick={() => hendleWish(item)}>
+                      <img
+                        src={
+                          productsWish.some((product) => product.id === item.id) ? iconHeartRed : iconHeart
+                        }
+                        alt=""
+                        className="product__icon"
+                      />
+                    </button>
+                  </div>
+                  <Link to={`/details/${item.id}`}>
                     <h3 className="product__title">{item.title}</h3>
                     <div className="product__row">
                       <div className="product-rate">
@@ -124,13 +143,13 @@ const New = () => {
                         <span className="product-rate__rate">5.0 (18)</span>
                       </div>
                       <div className="product-rate__price flex ">
-                          <span className="mr-[8px] line-through">$210</span>
-                          <span className="text-red-600">$110</span>
+                        <span className="mr-[8px] line-through">$210</span>
+                        <span className="text-red-600">$110</span>
                       </div>
                     </div>
-                  </section>
-                </article>
-              </Link>
+                  </Link>
+                </section>
+              </article>
             </SwiperSlide>
           ))}
         </Swiper>

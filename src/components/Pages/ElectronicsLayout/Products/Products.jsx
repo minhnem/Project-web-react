@@ -1,33 +1,54 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-
 import iconHeart from "../../../../assets/icons/icon-heart.png";
 import iconStar from "../../../../assets/icons/star.png";
 import { Pagination } from "antd";
+import iconHeartRed from "../../../../assets/icons/iconHert-red.svg";
+import { WishContext } from "../../../../features/WishContextProvider";
+import { AuthContext } from "../../../../features/UserContextProvider";
+import { toast } from "react-toastify";
 
 const Products = () => {
-  const [products, setProducts] = useState([])
+  const [products, setProducts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const pageSize = 16;
-  // Chia dữ liệu theo trang
   const indexOfLastProduct = currentPage * pageSize;
   const indexOfFirstProduct = indexOfLastProduct - pageSize;
-  const currentProducts = products.slice(indexOfFirstProduct, indexOfLastProduct);
+  const currentProducts = products.slice(
+    indexOfFirstProduct,
+    indexOfLastProduct
+  );
 
-  const fetchProducts = async () =>{
-    const response = await fetch('https://my-data-json-server.vercel.app/products')
-    const data = await response.json()
-    const listProduct = data.filter((item)=> item.category_id === 1)
+  const { productsWish, dispatch } = useContext(WishContext);
+  const { state } = useContext(AuthContext);
+
+  const fetchProducts = async () => {
+    const response = await fetch(
+      "https://my-data-json-server.vercel.app/products"
+    );
+    const data = await response.json();
+    const listProduct = data.filter((item) => item.category_id === 1);
     setProducts(listProduct);
-  }
-  
-  useEffect(()=>{
-    fetchProducts()
-  },[])
+  };
 
+  useEffect(() => {
+    fetchProducts();
+  }, []);
 
   const handlePageChange = (page) => {
     setCurrentPage(page);
+  };
+
+  const hendleWish = (item) => {
+    if (state.isAuthenticated) {
+      if (productsWish.some((product) => product.id === item.id)) {
+        dispatch({ type: "Remove_wish", id: item.id });
+      } else {
+        dispatch({ type: "Add_wish", product: item });
+      }
+    } else {
+      toast.error("Đăng nhập trước khi thêm vào danh sách yêu thích");
+    }
   };
 
   return (
@@ -45,19 +66,27 @@ const Products = () => {
           {/* item 1 */}
           {currentProducts.map((item, index) => (
             <div key={index} className="product__item ">
-              <Link to={`/details/${item.id}`}>
-                <article className="product bg-[#FFF]">
+              <article className="product bg-[#FFF]">
+                <Link to={`/details/${item.id}`}>
                   <div className="product__wrap relative">
                     <img src={item.img} alt="" className="product__img" />
                     {/* added to wish list */}
                   </div>
-                  <section className="product__content">
-                    <div className="product__row">
-                      <span className="product__brand">Men-Cloths</span>
-                      <button>
-                        <img src={iconHeart} alt="" className="product__icon" />
-                      </button>
-                    </div>
+                </Link>
+                <section className="product__content">
+                  <div className="product__row">
+                    <span className="product__brand">Men-Cloths</span>
+                    <button onClick={() => hendleWish(item)}>
+                      <img
+                        src={
+                          productsWish.some((product) => product.id === item.id) ? iconHeartRed : iconHeart
+                        }
+                        alt=""
+                        className="product__icon"
+                      />
+                    </button>
+                  </div>
+                  <Link to={`/details/${item.id}`}>
                     <h3 className="product__title">{item.title}</h3>
                     <div className="product__row">
                       <div className="product-rate">
@@ -70,9 +99,9 @@ const Products = () => {
                       </div>
                       <span className="product-rate__price">$110</span>
                     </div>
-                  </section>
-                </article>
-              </Link>
+                  </Link>
+                </section>
+              </article>
             </div>
           ))}
         </div>

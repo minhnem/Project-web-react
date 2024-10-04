@@ -13,6 +13,8 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import UserContextProvider from "./features/UserContextProvider.jsx";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Profile from "./components/Pages/Profile/Profile.jsx";
+import Wish from "./components/Pages/Wish/Wish.jsx";
 
 
 const router = createBrowserRouter([
@@ -30,7 +32,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Home />,
+        element: <Home/>,
       },
       {
         path: "/details/:id",
@@ -41,8 +43,16 @@ const router = createBrowserRouter([
         element: <Cart />,
       },
       {
+        path: "/wish",
+        element: <Wish />,
+      },
+      {
         path: "/electronics",
         element: <Electronics />,
+      },
+      {
+        path: "/profile",
+        element: <Profile />,
       },
     ],
   },
