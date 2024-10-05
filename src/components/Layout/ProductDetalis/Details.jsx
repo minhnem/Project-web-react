@@ -3,6 +3,7 @@ import "./details.scss";
 import iconStar from "../../../assets/icons/star.png";
 import iconStars from "../../../assets/icons/stars.png";
 import iconStarsDark from "../../../assets/icons/stars-dark.png";
+import { useNavigate, useParams } from "react-router-dom";
 import { CartContext } from "../../../features/ContextProvider";
 import { AuthContext } from "../../../features/UserContextProvider";
 

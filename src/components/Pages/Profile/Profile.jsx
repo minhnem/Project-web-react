@@ -1,16 +1,27 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import "./profile.scss";
 import avatar from "../../../assets/img/avatar.png";
 import iconUser from "../../../assets/icons/user.svg";
 import iconAdress from "../../../assets/icons/adress.svg";
-import arrowleft from "../../../assets/icons/arrow-left.svg"
+import arrowleft from "../../../assets/icons/arrow-left.svg";
 import iconProfile1 from "../../../assets/icons/iconProfile-1.svg";
 import iconProfile2 from "../../../assets/icons/iconProfile-2.svg";
 import iconProfile3 from "../../../assets/icons/iconProfile-3.svg";
 import iconProfile4 from "../../../assets/icons/iconProfile-4.svg";
 import iconProfile5 from "../../../assets/icons/iconProfile-5.svg";
+import { AuthContext } from "../../../features/UserContextProvider";
+import { FaRegEye } from "react-icons/fa6";
+import { FaRegEyeSlash } from "react-icons/fa6";
 
 const Profile = () => {
+  const [isShow, setIsShow] = useState(false);
+
+  const { state } = useContext(AuthContext);
+
+  const handleShow = () => {
+    setIsShow(!isShow);
+  };
+
   return (
     <div className="profile bg-[#cccccc36]">
       <div className="inner">
@@ -101,13 +112,13 @@ const Profile = () => {
 
           <div className="lg:col-span-2">
             <div className="profile-info">
-              <h1 className="profile-info__title">
-                Thông tin cá nhân
-              </h1>
+              <h1 className="profile-info__title">Thông tin cá nhân</h1>
               <form action="" className="form">
                 <div className="grid grid-cols-1 lg:grid-cols-2 lg:gap-[30px]">
                   <div className="form-info">
-                    <label htmlFor="" className="form-info__label">Họ và tên</label>
+                    <label htmlFor="" className="form-info__label">
+                      Họ và tên
+                    </label>
                     <div className="form-info__group">
                       <input
                         type="text"
@@ -115,10 +126,12 @@ const Profile = () => {
                         className="form-info__input"
                       />
                     </div>
-                    <label htmlFor="" className="form-info__label">Số điện thoại</label>
+                    <label htmlFor="" className="form-info__label">
+                      Số điện thoại
+                    </label>
                     <div className="form-info__group">
                       <input
-                        type="text"
+                        type="number"
                         placeholder="Số điện thoại"
                         className="form-info__input"
                       />
@@ -126,19 +139,36 @@ const Profile = () => {
                   </div>
 
                   <div className="form-info">
-                  <label htmlFor="" className="form-info__label">Địa chỉ email</label>
+                    <label htmlFor="" className="form-info__label">
+                      Địa chỉ email
+                    </label>
                     <div className="form-info__group">
                       <input
-                        type="number"
+                        type="email"
+                        value={state.user.email}
                         className="form-info__input"
                       />
                     </div>
-                    <label htmlFor="" className="form-info__label">Mật khẩu</label>
+                    <label htmlFor="" className="form-info__label">
+                      Mật khẩu
+                    </label>
                     <div className="form-info__group">
                       <input
-                        type="password"
+                        type= {isShow ? "text" :"password"}
+                        value={state.user.password}
                         className="form-info__input"
                       />
+                      {isShow ? (
+                        <FaRegEye
+                          className="form__icon-show"
+                          onClick={() => handleShow()}
+                        />
+                      ) : (
+                        <FaRegEyeSlash
+                          className="form__icon-show"
+                          onClick={() => handleShow()}
+                        />
+                      )}
                     </div>
                   </div>
                 </div>

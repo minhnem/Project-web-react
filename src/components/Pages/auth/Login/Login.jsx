@@ -82,7 +82,7 @@ const Login = () => {
       const email = inputEmailRef.current.value;
       const password = inputPasswordRef.current.value;
       if (await checkUsers(email, password)) {
-        dispatch({ type: "LOGIN" });
+        dispatch({ type: "LOGIN", user: {emailUser: email, passwordUser: password}});
         navigate("/");
         toast.success("Đăng nhập thành công");
       } else {

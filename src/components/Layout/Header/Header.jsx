@@ -76,39 +76,6 @@ const Header = () => {
                       <Link to="/electronics" className="item-page__item">
                         Electronics
                       </Link>
-                      <Link to="/" className="item-page__item">
-                        Women Fashion
-                      </Link>
-                      <Link to="/" className="item-page__item">
-                        Kids Fashion
-                      </Link>
-                      <Link to="/" className="item-page__item">
-                        Baby Fashion
-                      </Link>
-                      <Link to="/" className="item-page__item">
-                        Men Fashion
-                      </Link>
-                      <Link to="/" className="item-page__item">
-                        Computer Device
-                      </Link>
-                      <Link to="/" className="item-page__item">
-                        Beauty Products
-                      </Link>
-                      <Link to="/" className="item-page__item">
-                        Furniture
-                      </Link>
-                      <Link to="/" className="item-page__item">
-                        Smart Watch
-                      </Link>
-                      <Link to="/" className="item-page__item">
-                        Modern Shoes
-                      </Link>
-                      <Link to="/" className="item-page__item">
-                        Jewelry
-                      </Link>
-                      <Link to="/" className="item-page__item">
-                        Home Products
-                      </Link>
                     </Col>
                   </div>
                 </Col>
@@ -127,12 +94,6 @@ const Header = () => {
                 <Col className="nav-page">
                   <a href="#" className="nav-page__menu">
                     About
-                    <img src={arrow} alt="icon-arrow" className="ml-[6px]" />
-                  </a>
-                </Col>
-                <Col className="nav-page">
-                  <a href="#" className="nav-page__menu mr-0">
-                    Pages
                     <img src={arrow} alt="icon-arrow" className="ml-[6px]" />
                   </a>
                 </Col>
@@ -242,72 +203,6 @@ const Header = () => {
                       <Col>
                         <Link to="/electronics" className="item-page__item text-[#005D63]">
                           Electronics
-                        </Link>
-                        <Link
-                          to="/"
-                          className="item-page__item nav-page__item--mobile"
-                        >
-                          Women Fashion
-                        </Link>
-                        <Link
-                          to="/"
-                          className="item-page__item nav-page__item--mobile"
-                        >
-                          Kids Fashion
-                        </Link>
-                        <Link
-                          to="/"
-                          className="item-page__item nav-page__item--mobile"
-                        >
-                          Baby Fashion
-                        </Link>
-                        <Link
-                          to="/"
-                          className="item-page__item nav-page__item--mobile"
-                        >
-                          Mobile Device
-                        </Link>
-                        <Link
-                          to="/"
-                          className="item-page__item nav-page__item--mobile"
-                        >
-                          Computer Device
-                        </Link>
-                        <Link
-                          to="/"
-                          className="item-page__item nav-page__item--mobile"
-                        >
-                          Beauty Products
-                        </Link>
-                        <Link
-                          to="/"
-                          className="item-page__item nav-page__item--mobile"
-                        >
-                          Furniture
-                        </Link>
-                        <Link
-                          to="/"
-                          className="item-page__item nav-page__item--mobile"
-                        >
-                          Smart Watch
-                        </Link>
-                        <Link
-                          to="/"
-                          className="item-page__item nav-page__item--mobile"
-                        >
-                          Modern Shoes
-                        </Link>
-                        <Link
-                          to="/"
-                          className="item-page__item nav-page__item--mobile"
-                        >
-                          Jewelry
-                        </Link>
-                        <Link
-                          to="/"
-                          className="item-page__item nav-page__item--mobile"
-                        >
-                          Home Products
                         </Link>
                       </Col>
                     </div>
