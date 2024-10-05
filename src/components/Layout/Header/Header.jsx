@@ -82,19 +82,16 @@ const Header = () => {
                 <Col className="nav-page">
                   <a href="#" className="nav-page__menu">
                     Brand
-                    <img src={arrow} alt="icon-arrow" className="ml-[6px]" />
                   </a>
                 </Col>
                 <Col className="nav-page">
                   <a href="#" className="nav-page__menu">
                     Products
-                    <img src={arrow} alt="icon-arrow" className="ml-[6px]" />
                   </a>
                 </Col>
                 <Col className="nav-page">
                   <a href="#" className="nav-page__menu">
                     About
-                    <img src={arrow} alt="icon-arrow" className="ml-[6px]" />
                   </a>
                 </Col>
               </Row>

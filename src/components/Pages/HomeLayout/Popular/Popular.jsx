@@ -53,7 +53,7 @@ const Popular = () => {
   return (
     <div className="popular py-[50px] my-[25px] bg-[#cccccc36]">
       <section className="inner" data-aos="fade-up">
-        <h2 className="product__heading">Our product products</h2>
+        <h2 className="product__heading">Our products</h2>
         <div className="product__row flex justify-between mb-[70px]">
           <p className="product__desc">
             Browse our most popular products and make your day more beautiful

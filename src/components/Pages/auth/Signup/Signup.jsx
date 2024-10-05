@@ -226,7 +226,7 @@ const Signup = () => {
             </button>
             <button className="auth__btn mb-[50px] auth__btn--gmail">
               <img src={iconGmail} alt="" className="auth__icon-gmail" />
-              Đắng ký bằng Gmail
+              Đăng ký bằng Gmail
             </button>
           </form>
           <div className="auth__line">
