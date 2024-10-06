@@ -82,6 +82,7 @@ const Login = () => {
       const email = inputEmailRef.current.value;
       const password = inputPasswordRef.current.value;
       if (await checkUsers(email, password)) {
+        localStorage.setItem("user", JSON.stringify({ emailUser: email, passwordUser: password }));
         dispatch({ type: "LOGIN", user: {emailUser: email, passwordUser: password}});
         navigate("/");
         toast.success("Đăng nhập thành công");

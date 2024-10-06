@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import "./cart.scss";
 import arrowRight from "../../../assets/icons/arrowRight.svg";
 import iconDelete from "../../../assets/icons/delete.svg";
@@ -12,6 +12,7 @@ import { useLocation, Link } from "react-router-dom";
 
 const Cart = () => {
   const {cart, dispatch} = useContext(CartContext)
+  
   const totalProduct = cart.length
   const totalPrice = cart.reduce((sum, product) => sum + (product.discount * product.quantity) ,0)
   const totalPriceShip = cart.reduce((sum,product) => sum + product.priceShip ,0)
@@ -19,7 +20,7 @@ const Cart = () => {
 
   const location = useLocation();
   const backPage =  location.state?.from || "/";
-  
+
   return (
     <div className="cart bg-[#cccccc36] py-[70px]">
       <div className="inner">

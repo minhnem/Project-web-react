@@ -29,6 +29,12 @@ const Header = () => {
   const { productsWish } = useContext(WishContext)
   const location = useLocation();
 
+  const handleLogout = () => {
+    localStorage.removeItem("user")
+    dispatch({ type: "LOGOUT" });
+    toast.success("Đăng xuất thành công.")
+  }
+
   return (
     <>
       <div className="header px-[24px]  pt-[28px] bg-[#005D63] sticky top-0 z-[9]">
@@ -108,10 +114,7 @@ const Header = () => {
                       <Link
                         to={"/"}
                         className="flex gap-[5px] items-center px-[18px] py-[11px] text-[1rem] font-[600] text-[#005D63]"
-                        onClick={() => {
-                          dispatch({ type: "LOGOUT" });
-                          toast.success("Đăng xuất thành công.")
-                        }}
+                        onClick={() => handleLogout()}
                       >
                         <BiLogOut /> Đăng xuất
                       </Link>
