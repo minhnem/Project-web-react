@@ -15,8 +15,8 @@ const Brand = () => {
     <div>
       <div className="brand my-[25px]">
         <section className="inner py-[50px]" data-aos="fade-up">
-          <h2 className="explore__heading mb-[70px] max-w-[470px]">
-            Explore, find exactly what you need
+          <h2 className="explore__heading mb-[70px] max-w-[470px] lg:max-w-[490px]">
+          Khám phá và tìm thấy chính xác những gì bạn cần
           </h2>
           <div className="explore__list grid lg:grid-rows-1 lg:grid-cols-4 grid-rows-2 grid-cols-2  gap-[20px]">
             {item.map((item, index) => (

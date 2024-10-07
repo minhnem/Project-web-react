@@ -15,10 +15,10 @@ const Learn = () => {
     <div className="learn my-[25px]">
         <section className="inner py-[50px]" data-aos="fade-up">
           <h2 className="learn__heading max-w-[327px] md:max-w-[470px]">
-            Learn how to build and grow your online store
+          Tìm hiểu cách xây dựng và phát triển cửa hàng trực tuyến của bạn
           </h2>
           <p className='learn__desc max-w-[327px] md:max-w-[470px]'>
-            Get insider tips and step-by-step guidance from eCommerce experts and successful Wix Merchants.
+          Nhận những mẹo từ chuyên gia và hướng dẫn từng bước từ các chuyên gia eCommerce và những người bán hàng thành công trên Wix.
           </p>
           <div className="learn__list grid lg:grid-rows-1 lg:grid-cols-3 grid-rows-3 grid-cols-1 gap-[30px]">
             {item.map((item, index) => (
@@ -28,7 +28,7 @@ const Learn = () => {
                       <img src={item.img} alt="" />
                   </figure>
                   <p className='learn__desc--blog'>{item.desc}</p>
-                  <a href="#!" className='learn__link'>Read the blog </a>
+                  <a href="#!" className='learn__link'>Đọc blog</a>
                   </article>
               </div>
             ))}

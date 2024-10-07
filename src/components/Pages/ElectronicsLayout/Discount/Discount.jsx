@@ -64,36 +64,36 @@ const Discount = () => {
           <div className="best-electronics__wrap flex items-center">
             <img src={iconCarShipping} alt="" />
             <div className="best-electronics__inner ml-[5px]">
-              <h4 className="text-[1.3125rem] font-[600]">Free Shipping</h4>
+              <h4 className="text-[1.3125rem] font-[600]">Miễn phí vận chuyển</h4>
               <p className="text-[0.875rem] font-[400]">
-                Free Shipping On All Order
+                Miễn phí vận chuyển cho tất cả các đơn hàng
               </p>
             </div>
           </div>
           <div className="best-electronics__wrap flex items-center">
             <img src={iconSupport} alt="" />
             <div className="best-electronics__inner ml-[5px]">
-              <h4 className="text-[1.3125rem] font-[600]">Support 24/7</h4>
+              <h4 className="text-[1.3125rem] font-[600]">Hỗ trợ 24/7</h4>
               <p className="text-[0.875rem] font-[400]">
-                Support 24 hours a day
+                Hỗ trợ 24 giờ một ngày
               </p>
             </div>
           </div>
           <div className="best-electronics__wrap flex items-center">
             <img src={iconCartOder} alt="" />
             <div className="best-electronics__inner ml-[5px]">
-              <h4 className="text-[1.3125rem] font-[600]">Money return</h4>
+              <h4 className="text-[1.3125rem] font-[600]">Tiền trả lại</h4>
               <p className="text-[0.875rem] font-[400]">
-                Back guaramtee under 5 days
+                Đảm bảo trả lại trong vòng 5 ngày
               </p>
             </div>
           </div>
           <div className="best-electronics__wrap flex items-center">
             <img src={iconCartOder} alt="" />
             <div className="best-electronics__inner ml-[5px]">
-              <h4 className="text-[1.3125rem] font-[600]">Order Discounts</h4>
+              <h4 className="text-[1.3125rem] font-[600]">Đặt hàng giảm giá</h4>
               <p className="text-[0.875rem] font-[400]">
-                Onevery order over $150
+                Với mỗi đơn hàng trên $150
               </p>
             </div>
           </div>
@@ -102,10 +102,10 @@ const Discount = () => {
       <section className="inner" data-aos="fade-up">
         <section className="best-electronics__row flex justify-between items-center mb-[40px] xl:mb-[70px]">
           <h2 className="product__heading max-w-[240px] lg:max-w-[470px]">
-            Discount
+            Những Sản Phẩm Giảm Giá
           </h2>
           <div>
-            <button className="product__browse btn">Browse All</button>
+            <button className="product__browse btn">Xem tất cả</button>
           </div>
         </section>
         <Swiper

@@ -52,7 +52,7 @@ const Header = () => {
                 <div className="flex">
                   <input
                     type="text"
-                    placeholder="Search for anything"
+                    placeholder="Tìm kiếm những thứ bạn cần"
                     className="h-[44px]] xl:w-[700px] lg:w-[600px] pl-[10px] rounded-l-lg outline-none"
                   />
                   <img
@@ -67,12 +67,12 @@ const Header = () => {
               <Row className="nav__list mt-[28px] relative">
                 <Col className="nav-page">
                   <Link to="/" className="nav-page__menu">
-                    Home
+                    Trang chủ
                   </Link>
                 </Col>
                 <Col className="nav-page nav-page__category pb-[28px]">
                   <a href="#" className="nav-page__menu">
-                    Category
+                    Danh mục
                     <img src={arrow} alt="icon-arrow" className="ml-[6px]" />
                   </a>
 
@@ -80,24 +80,24 @@ const Header = () => {
                   <div className="nav-page__list absolute top-[55px] w-[210px] bg-[#005D63]">
                     <Col>
                       <Link to="/electronics" className="item-page__item">
-                        Electronics
+                        ĐIện tử
                       </Link>
                     </Col>
                   </div>
                 </Col>
                 <Col className="nav-page">
                   <a href="#" className="nav-page__menu">
-                    Brand
+                    Thương hiệu
                   </a>
                 </Col>
                 <Col className="nav-page">
                   <a href="#" className="nav-page__menu">
-                    Products
+                    Sản phẩm
                   </a>
                 </Col>
                 <Col className="nav-page">
                   <a href="#" className="nav-page__menu">
-                    About
+                    Giới thiệu
                   </a>
                 </Col>
               </Row>
@@ -168,7 +168,7 @@ const Header = () => {
               <div className="flex">
                 <input
                   type="text"
-                  placeholder="Search for anything"
+                  placeholder="Tìm kiếm những thứ bạn cần"
                   className="h-[44px]] w-[170px] pl-[10px] outline-none"
                 />
                 <img src={search} alt="icon-search" className="rounded-r-lg" />
@@ -186,7 +186,7 @@ const Header = () => {
                       to="/"
                       className="nav-page__menu nav-page__menu--mobile justify-between"
                     >
-                      Home
+                      Trang chủ
                     </Link>
                   </Col>
                   <Col className="nav-page nav-page__category">
@@ -194,7 +194,7 @@ const Header = () => {
                       href="#"
                       className="nav-page__menu nav-page__menu--mobile justify-between"
                     >
-                      Category
+                      Danh mục
                       <img src={arrow} alt="icon-arrow" className="ml-[6px]" />
                     </a>
 
@@ -202,7 +202,7 @@ const Header = () => {
                     <div className="nav-page__list w-fulln">
                       <Col>
                         <Link to="/electronics" className="item-page__item text-[#005D63]">
-                          Electronics
+                          Điện tử
                         </Link>
                       </Col>
                     </div>
@@ -212,7 +212,7 @@ const Header = () => {
                       href="#"
                       className="nav-page__menu nav-page__menu--mobile justify-between"
                     >
-                      Brand
+                      Thương hiệu
                       <img src={arrow} alt="icon-arrow" className="ml-[6px]" />
                     </a>
                   </Col>
@@ -221,7 +221,7 @@ const Header = () => {
                       href="#"
                       className="nav-page__menu nav-page__menu--mobile justify-between"
                     >
-                      Products
+                      Sản phẩm
                       <img src={arrow} alt="icon-arrow" className="ml-[6px]" />
                     </a>
                   </Col>
@@ -230,24 +230,7 @@ const Header = () => {
                       href="#"
                       className="nav-page__menu nav-page__menu--mobile justify-between"
                     >
-                      About
-                      <img src={arrow} alt="icon-arrow" className="ml-[6px]" />
-                    </a>
-                  </Col>
-                  <Col className="nav-page">
-                    <a
-                      href="#"
-                      className="nav-page__menu nav-page__menu--mobile justify-between"
-                    >
-                      Shop
-                    </a>
-                  </Col>
-                  <Col className="nav-page">
-                    <a
-                      href="#"
-                      className="nav-page__menu nav-page__menu--mobile justify-between"
-                    >
-                      Pages
+                      Giới thiệu
                       <img src={arrow} alt="icon-arrow" className="ml-[6px]" />
                     </a>
                   </Col>

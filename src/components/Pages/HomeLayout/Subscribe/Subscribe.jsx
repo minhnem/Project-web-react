@@ -8,12 +8,12 @@ const Subscribe = () => {
       <div className="inner" data-aos="fade-up">
           <section className="grid grid-rows-1 lg:grid-cols-2 md:grid-cols-2 gap-[30px] justify-between">
             <section className="subscribe__content lg:max-w-[470px] mr-auto min-h-full">
-              <h1 className="subscribe__heading mt-[34px] mb-[40px] text-[2.5rem] font-[700] text-white leading-[4.25rem] lg:text-[3.7rem]">
-                Subscribe our newsletter to get latest product updates
+              <h1 className="subscribe__heading mt-[34px] mb-[40px] text-[2rem] font-[700] text-white leading-[4.25rem] lg:text-[3rem]">
+              Đăng ký nhận bản tin của chúng tôi để nhận thông tin cập nhật sản phẩm mới nhất
               </h1>
               <div className='subscribe__row lg:flex items-center'>
                 <input type="email" placeholder='Enter your email' className='pl-[16px] w-[297px] h-[60px] border-[1px] rounded-[5px] bg-[#005D63] outline-none'/>
-                <button className="subscribe__btn mt-[20px] lg:mt-[0] lg:ml-[20px] px-[35px] py-[15px] rounded-[5px] bg-[#FFD44D] cursor-pointer text-white">Subscribe</button>
+                <button className="subscribe__btn mt-[20px] lg:mt-[0] lg:ml-[20px] px-[35px] py-[15px] rounded-[5px] bg-[#FFD44D] cursor-pointer text-white">Đăng ký</button>
               </div>
             </section>
             <figure className="subscribe__img flex items-center justify-center">

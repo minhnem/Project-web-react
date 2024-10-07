@@ -56,10 +56,10 @@ const Products = () => {
       <section className="inner" data-aos="fade-up">
         <section className="best-electronics__row flex justify-between items-center mb-[40px] xl:mb-[70px]">
           <h2 className="product__heading max-w-[240px] lg:max-w-[470px]">
-            Our Products
+            Những sản phẩm của chúng tôi
           </h2>
           <div>
-            <button className="product__browse btn">Browse All</button>
+            <button className="product__browse btn">Xem tất cả</button>
           </div>
         </section>
         <div className="product__list grid grid-rows-8 grid-cols-2 md:grid-rows-3 md:grid-cols-3 lg:grid-rows-4 lg:grid-cols-4 gap-[20px]">

@@ -54,13 +54,12 @@ const New = () => {
   return (
     <div className="new py-[50px] my-[25px] bg-[#cccccc36]">
       <section className="inner" data-aos="fade-up">
-        <h2 className="product__heading">Our New products</h2>
+        <h2 className="product__heading">Những sản phảm mới của chúng tôi</h2>
         <div className="product__row flex justify-between mb-[10px]">
           <p className="product__desc">
-            Browse our most popular products and make your day more beautiful
-            and glorious.
+          Khám phá những sản phẩm phổ biến nhất của chúng tôi và biến ngày của bạn trở nên đẹp đẽ và rực rỡ hơn.
           </p>
-          <button className="product__browse btn">Browse All</button>
+          <button className="product__browse btn">Xem tất cả</button>
         </div>
         <Swiper
           className="h-[300px] md:h-[450px]"

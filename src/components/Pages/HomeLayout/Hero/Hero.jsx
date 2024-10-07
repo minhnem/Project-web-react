@@ -10,11 +10,10 @@ const Hero = () => {
           <section className="grid grid-rows-1 lg:grid-cols-2 md:grid-cols-2 py-[70px] mb-[25px] gap-[30px] justify-between">
             <section className="hero__content lg:max-w-[470px] mr-auto min-h-full">
               <h1 className="hero__heading mt-[34px] mb-[20px] text-[2.5rem] font-[700] leading-[4.25rem] lg:text-[3.7rem]">
-                Find the best styles of modern shoes
+              Tìm kiếm những kiểu dáng giày hiện đại tốt nhất
               </h1>
               <p className="hero__desc mb-[34px] text-[1.125rem] font-[400] leading-[1.875rem]">
-                The most wanted styles is waiting for you. Find the best styles
-                of modern shoes for you .
+              Những kiểu dáng được săn đón nhất đang chờ bạn. Tìm ngay các mẫu giày hiện đại phù hợp với bạn.
               </p>
               <button className="hero__btn px-[35px] py-[15px] rounded-[5px] bg-[#005D63] cursor-pointer text-white">Explore Product</button>
             </section>

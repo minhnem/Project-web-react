@@ -53,10 +53,10 @@ const Hurry = () => {
       <section className="inner" data-aos="fade-up">
         <section className="hurry__row flex justify-between items-center mb-[40px] xl:mb-[70px]">
           <h2 className="product__heading max-w-[240px] lg:max-w-[470px]">
-            Hurry, don’t miss out on this offers
+          Nhanh lên, đừng bỏ lỡ cơ hội này!
           </h2>
           <div>
-            <button className="product__browse btn">Browse All</button>
+            <button className="product__browse btn">Xem tất cả</button>
           </div>
         </section>
         <div className="grid lg:grid-rows-2 lg:grid-cols-4 sm:grid-rows-3 sm:grid-cols-3 grid-rows-1 grid-cols-2 gap-[20px] xl:gap-[30px]">
@@ -110,7 +110,7 @@ const Hurry = () => {
                     <div className="relative">
                       <img src={item.img} alt="" className="product__img" />
                       <p className="py-[8px] lg:py-[10px] text-center text-[0.8rem] lg:text-[1.125rem] bg-[#F86624] text-[#FFF] absolute top-[37%] w-full">
-                        OUT OF STOCK
+                        Hết Hàng
                       </p>
                     </div>
                     {/* added to wish list */}

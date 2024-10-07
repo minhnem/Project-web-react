@@ -60,10 +60,10 @@ const New = () => {
       <section className="inner" data-aos="fade-up">
         <section className="best-electronics__row flex justify-between items-center mb-[40px] xl:mb-[70px]">
           <h2 className="product__heading max-w-[240px] lg:max-w-[470px]">
-            New Arrivals
+            Sản Phẩm Mới
           </h2>
           <div>
-            <button className="product__browse btn">Browse All</button>
+            <button className="product__browse btn">Xem tất cả</button>
           </div>
         </section>
         <Swiper
@@ -113,7 +113,7 @@ const New = () => {
                       <img src={item.img} alt="" className="product__img" />
                     </div>
                     <p className="flex justify-center items-center px-[10px] py-[6px] w-[35px] h-[35px] absolute top-[8px] left-[8px] rounded-full bg-[#ff0000f1] text-[0.6rem] lg:text-[0.875rem] text-[#FFF]">
-                      New
+                      Mới
                     </p>
                     {/* added to wish list */}
                   </div>

@@ -54,11 +54,10 @@ const Best = () => {
   return (
     <div className="best py-[50px] my-[25px] bg-[#cccccc36]">
       <section className="inner" data-aos="fade-up">
-        <h2 className="product__heading">Meet Our Best products</h2>
+        <h2 className="product__heading">Gặp gỡ những sản phẩm tốt nhất của chúng tôi</h2>
         <div className="product__row flex justify-between mb-[10px]">
           <p className="product__desc">
-            Browse our most popular products and make your day more beautiful
-            and glorious.
+          Duyệt qua những sản phẩm phổ biến nhất của chúng tôi và làm cho ngày của bạn thêm phần đẹp đẽ và rực rỡ.
           </p>
           <button className="product__browse btn">Browse All</button>
         </div>

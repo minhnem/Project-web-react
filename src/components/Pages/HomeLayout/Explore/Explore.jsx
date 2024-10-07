@@ -32,8 +32,8 @@ const Explore = () => {
     <div>
       <div className="explore bg-[#f1deb431] my-[25px]">
         <section className="inner py-[50px]" data-aos="fade-up">
-          <h2 className="explore__heading mb-[70px] max-w-[470px]">
-            Explore, find exactly what you need
+          <h2 className="explore__heading mb-[70px] max-w-[470px] lg:max-w-[490px]">
+          Khám phá và tìm thấy chính xác những gì bạn cần
           </h2>
           <div className="explore__list grid xl:grid-rows-3 xl:grid-cols-4 lg:grid-rows-4 lg:grid-cols-3 md:grid-rows-6 md:grid-cols-2 gap-[20px]">
             {item.map((item,index)=>(
